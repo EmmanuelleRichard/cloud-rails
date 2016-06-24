@@ -27,18 +27,6 @@ ActiveRecord::Schema.define(version: 20160623213121) do
   add_index "archives", ["folder_id"], name: "index_archives_on_folder_id", using: :btree
   add_index "archives", ["user_id"], name: "index_archives_on_user_id", using: :btree
 
-  create_table "assets", force: :cascade do |t|
-    t.integer  "user_id",                    limit: 4
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
-    t.string   "uploaded_file_file_name",    limit: 255
-    t.string   "uploaded_file_content_type", limit: 255
-    t.integer  "uploaded_file_file_size",    limit: 4
-    t.datetime "uploaded_file_updated_at"
-  end
-
-  add_index "assets", ["user_id"], name: "index_assets_on_user_id", using: :btree
-
   create_table "folders", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.integer  "parent_id",  limit: 4
@@ -49,12 +37,6 @@ ActiveRecord::Schema.define(version: 20160623213121) do
 
   add_index "folders", ["parent_id"], name: "index_folders_on_parent_id", using: :btree
   add_index "folders", ["user_id"], name: "index_folders_on_user_id", using: :btree
-
-  create_table "tests", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false

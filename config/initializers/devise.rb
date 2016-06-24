@@ -206,7 +206,7 @@ Devise.setup do |config|
   #
   # Require the `devise-encryptable` gem when using anything other than bcrypt
   # config.encryptor = :sha512
-
+config.secret_key = '28f05da5d1d7722c4fc9e7225ec50ea8ff0867ab51189b97329ba4cd701ab0b9e24186f244931145b5ffa19aa159893dfff1827a5f5a637eefd232f4bd91b125'
   # ==> Scopes configuration
   # Turn scoped views on. Before rendering "sessions/new", it will first check for
   # "users/sessions/new". It's turned off by default because it's slower if you

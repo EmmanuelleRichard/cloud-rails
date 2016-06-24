@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AurumCloud</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <p style="float: right; margin-top: -3%; margin-right: 2%">
+  <% if user_signed_in? %>
+
+        <%= current_user.email  %>
+        |
+        <%= link_to "Sair", destroy_user_session_path, :method => :delete %>
+    <% else %>
+        <em>Faça o login.</em>
+        <%= link_to 'Log in', new_user_session_path%>
+  <%end%>
+  </p>
+  <header>
+  <h1><span class="logo-font">aurum</span> Cloud drive</h1>
+  </header>
+<%= yield %>
+
+</body>
+</html>

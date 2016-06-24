@@ -1,0 +1,73 @@
+
+<div class="action-buttons">
+<% if @current_folder %>
+
+       <%= link_to new_sub_file_path(@current_folder) do%>
+       Upload
+       <i class="fa fa-cloud"></i>
+       <% end %>
+       <%= link_to new_sub_folder_path(@current_folder) do%>
+        Nova Pasta
+        <i class="fa fa-folder"></i>
+     <% end %>
+   <% else %>
+       <%= link_to new_archive_path do %>
+        Upload
+        <i class="fa fa-cloud-download"></i>
+       <% end %>
+       <%= link_to new_folder_path do %>
+        Nova pasta
+        <i class="fa fa-folder"></i>
+      <% end %>
+<% end %>
+</div>
+
+<div class="breadcrumbs">
+    <% if @current_folder #checking if we are under any folder %>
+        <%= link_to "Pasta root", root_url %>
+        <% @current_folder.ancestors.reverse.each do |folder| %>
+            » <%= link_to folder.name, browse_path(folder) %>
+        <% end %>
+         »  <%= @current_folder.name %>
+    <% else #if we are not under any folder%>
+        Pasta Root
+    <% end %>
+</div>
+<table class="aurum-table">
+  <thead>
+    <tr>
+      <th>Id Usuário</th>
+      <th>Nome</th>
+      <th>Modificado</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+<% @folders.each do |folder| %>
+  <tr>
+    <td class="center-table"><%= folder.user_id %></td>
+    <td class="center-table">
+      <i class="fa fa-folder fa-2x"></i>
+      <%= link_to folder.name, browse_path(folder) %></td>
+    <td class="center-table">-</td>
+    <td><%= link_to 'Remover', folder, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+  </tr>
+<% end %>
+<% @archives.each do |archive| %>
+  <tr>
+    <td class="center-table"><%= archive.user_id %></td>
+    <td>
+      <% if archive.uploaded_file_file_name.include? ".docx" %>
+      <i class="fa fa-file-word-o fa-2x"></i>
+          <% elsif archive.uploaded_file_content_type.include? "image" %>
+          <i class="fa fa-file-image-o fa-2x"></i>
+          <% else %>
+            <i class="fa fa-file-o fa-2x"></i>
+      <% end %>
+
+      <%= link_to archive.uploaded_file_file_name, archive.uploaded_file.url %></td>
+    <td><%= archive.uploaded_file_updated_at %></td>
+    <td><%= link_to 'Remover', archive, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>

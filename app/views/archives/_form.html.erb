@@ -1,0 +1,23 @@
+<%= form_for(@archive) do |f| %>
+  <% if @archive.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@archive.errors.count, "error") %> prohibited this archive from being saved:</h2>
+
+      <ul>
+      <% @archive.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :folder_id %>
+  <div class="field">
+       <%= f.label :uploaded_file, "Arquivo:" %><br><br>
+       <%= f.file_field :uploaded_file%>
+     </div>
+<%= f.hidden_field :user_id %>
+  <div class="actions">
+    <%= f.submit :class => 'button-primary'%>
+  </div>
+<% end %>

@@ -1,26 +1,16 @@
 // Place all the styles related to the Home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+*
+  font-family: "futura-pt"
+  font-weight: 500
 .breadcrumbs
-  margin: 0 0 2% 10%
+  margin: -2% 0 2% 10%
 
 body
   font-family: 'Helvetica'
   font-weight: lighter
   margin: 0
-.action-buttons
-  margin: 3% 0% 3% 10%
-  a, a:link, a:active, a:visited
-    color: #dea82c
-    border: 2px solid #dea82c
-    border-radius: 5px
-    text-decoration: none
-    padding: 10px
-    margin: 2px
-    transition: background 1s
-  a:hover
-    background-color: #542712
-
 h1
   font-weight: lighter
 .logo-font
@@ -72,10 +62,64 @@ td:first-child
 .center-table
   text-align: center
 header
-  background-image: asset_url('cloud.png')
+  background-color: white
+  .email
+    font-size: 21px
+.icone
+  width: 30px
+  vertical-align: top
+.avatar
+  width: 60px
+  height: 60px
+  background-size: cover
+  display: inline-block
+.action-buttons
+  background-color: #F6F6F6
+  padding: 5px 0px 5px 15px
+  a
+    margin-left: 5px
+    text-decoration: none
+.quadrado
+  width: 120px
+  height: 120px
+  background-color: #888
+  margin: 12px
+  background-size: cover
+  display: inline-block
+  position: relative
+  overflow: hidden
 
-  background-position: 80% 78%
-  background-size: 100%
-  border-bottom: 3px solid #dea82c
-  h1
-    margin: 5% 5% 5% 10%
+  &>a
+    text-align: center
+
+  &:hover
+    .informacao
+      bottom: 0
+
+  .informacao
+    background-color: rgba(0,0,0,0.5)
+    position: absolute
+    bottom: -25px
+    left: 0
+    width: 100%
+    color: #FFF
+    transition: all 300ms ease
+    span
+      font-size: 13px
+      display: block
+
+    .info-icone
+      height: 20px
+.email
+  color: #d77018
+.nofile
+  background-size: 70px 70px
+  background-position: center center 
+  background-repeat: no-repeat
+
+body
+  background-color: #CCC
+
+.folder-icone
+  display: block
+  margin: 0 auto
